@@ -18,7 +18,7 @@ since it prortfolio project it not yet available for public use. But you can tes
 * Frontpage
 ![Frontpage](./Resource/FrontPage.jpeg)
 * Order Form
-![Form](./Resource/OrderForm.jpeg)
+![Form](./Resource/Order_form.jpeg)
 
 # what are available features?
 
