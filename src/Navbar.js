@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBell, faHome, faComment, faUser } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faComment, faUser } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -13,18 +13,18 @@ const Navbar = () => {
           backgroundColor: '#f1356d',
           borderRadius: '8px' 
         }}><FontAwesomeIcon icon={faComment} />Chat</Link>
-        <Link to="/notification" style={{ 
-          color: 'white', 
-          backgroundColor: '#f1356d',
-          borderRadius: '8px' 
-        }}>
-          <FontAwesomeIcon icon={faBell} />
-        </Link>
         <Link to="/profile" style={{ 
           color: 'white', 
           backgroundColor: '#f1356d',
           borderRadius: '8px' 
-        }}><FontAwesomeIcon icon={faUser} />Profile</Link>
+        }}><FontAwesomeIcon icon={faUser} /></Link>
+        <Link to="/about" style={{ 
+          color: 'white', 
+          backgroundColor: '#f1356d',
+          borderRadius: '8px' 
+        }}>
+          About
+        </Link>
       </div>
     </nav>
   );
