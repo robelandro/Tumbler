@@ -1,4 +1,4 @@
-video {
+.img1 {
   object-fit: cover;
   width: 100%;
   height: 100%;
@@ -11,25 +11,45 @@ video {
   height: 100vh;
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
   object-fit: contain;
 }
-
-.hero-container > h1 {
-  color: #fff;
-  font-size: 100px;
-  margin-top: -100px;
+.img2 {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
 }
 
-.hero-container > p {
-  margin-top: 8px;
-  color: #fff;
+.new-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.new-container p1 {
+  color: #111827;
   font-size: 32px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-    'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
+  /* margin-bottom: 16px; */
+}
+
+.new-container p2 {
+  color: #111827;
+  font-size: 32px;
+  font-weight: bold;
+  /* margin-bottom: 16px; */
+}
+
+.new-container p3 {
+  color: #f1356d;
+  font-size: 16px;
+  font-weight: bold;
+  /* margin-bottom: 32px; */
 }
 
 .hero-btns {
@@ -68,5 +88,20 @@ video {
 
   .btn {
     width: 100%;
+  }
+    .img2 {
+    margin-top: 16px;
+  }
+
+  .new-container p1 {
+    font-size: 20px;
+  }
+
+  .new-container p2 {
+    font-size: 20px;
+  }
+
+  .new-container p3 {
+    font-size: 14px;
   }
 }

@@ -34,7 +34,10 @@
   text-decoration: none;
   padding: 6px;
 }
-
+.logo {
+  width: 50px;
+  height: 30px;
+}
 .navbar a:hover {
   color: #f57e9a;
 }
