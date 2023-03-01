@@ -1,10 +1,13 @@
-import Navbar from './Navbar';
-import Home from './Home';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import OrderForm from './OrderForm';
-import Skill from './Skill';
-import ChatList from './ChatList';
-import Profile from './Profile';
+import Navbar from './components/Navbar';
+import Home from './components/pages/Home';
+import OrderForm from './components/pages/OrderForm';
+import Skill from './components/pages/Skill';
+import ChatList from './components/pages/ChatList';
+import Profile from './components/pages/Profile';
+import About from './components/pages/About';
+import Login from './components/pages/Login';
+import Register from './components/pages/Register';
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
             <Route path="/skill" element={<Skill />} />
             <Route path="/chat" element={<ChatList />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
         </div>
       </div>

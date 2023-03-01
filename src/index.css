@@ -40,7 +40,7 @@
 }
 
 .content {
-  max-width: 600px;
+  max-width: 100%;
   margin: 80px auto 40px;
   padding: 20px;
 }
