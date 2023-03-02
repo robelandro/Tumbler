@@ -14,7 +14,8 @@ in my country there is no platform where you can get your broken anything fixed 
 # How to use tumbler?
 
 since it prortfolio project it not yet available for public use. But you can test it by cloning this repo and running it on your local machine.
-
+* Landing Page
+![Landing Page](./Resource/LandingPage.png) or Temp website [here](http://test.nftalem.tech/about)
 * Frontpage
 ![Frontpage](./Resource/FrontPage.jpeg)
 * Order Form

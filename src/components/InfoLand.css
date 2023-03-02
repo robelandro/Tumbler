@@ -1,0 +1,51 @@
+/* InfoLand.css */
+
+.info-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 50px 0;
+  }
+  
+  .text-container {
+	flex: 1;
+	margin-right: 50px;
+	text-align: center;
+  }
+  
+  .text-container h1 {
+	font-size: 36px;
+	margin-bottom: 20px;
+	color: #111827;
+  }
+  
+  .text-container p {
+	font-size: 18px;
+	margin-bottom: 30px;
+	color: rgb(48, 42, 42);
+  }
+  
+  .img-container {
+	flex: 1;
+	max-width: 500px;
+  }
+  
+  .img-container img {
+	max-width: 100%;
+	height: auto;
+  }
+  
+  @media screen and (max-width: 768px) {
+	.info-container {
+	  flex-direction: column;
+	}
+  
+	.text-container {
+	  margin: 0 0 50px;
+	}
+  
+	.img-container {
+	  margin: 0 0 50px;
+	}
+  }
+  

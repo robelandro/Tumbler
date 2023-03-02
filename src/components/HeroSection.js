@@ -7,6 +7,7 @@ function HeroSection() {
     <div className="hero-container">
       <img src="/images/Page 1.png" className="img1" alt="bakground" />
       <dev className="new-container">
+        <img src="/images/logo.png" className="img3" alt="logo" />
         <p1>
           Revive Your Broken Items Locally with Tumbler - Get Anything Fixed!
         </p1>
@@ -25,7 +26,7 @@ function HeroSection() {
           </Button>
         </div>
       </dev>
-      <img src="/images/key.png" className="img2" alt="demo"/>
+      <img src="/images/key3.png" className="img2" alt="demo"/>
     </div>
   );
 }

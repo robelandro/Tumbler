@@ -4,41 +4,21 @@ import CardItem from './CardItem';
 function Cards() {
   return (
     <div className='cards'>
-      <h1>Check out these EPIC Destinations!</h1>
+      <h1>Discover why our customers are smiling - take a peek at their happiness!</h1>
       <div className='cards__container'>
         <div className='cards__wrapper'>
           <ul className='cards__items'>
             <CardItem
-              src='images/img-9.jpg'
-              text='Explore the hidden waterfall deep inside the Amazon Jungle'
-              label='Adventure'
-              path='/services'
+              src='images/male.png'
+              text='"I was so impressed with the quick and reliable repair services I received through Tumbler! The platform connected me with a skilled local repairman who fixed my broken phone in no time. I saved so much time and money by avoiding expensive repair shops, and I would definitely recommend Tumbler to anyone in need of quick and hassle-free repairs."'
+              label='Abiy Ahmed'
+              path='/@Eyob'
             />
             <CardItem
-              src='images/img-2.jpg'
-              text='Travel through the Islands of Bali in a Private Cruise'
-              label='Luxury'
-              path='/services'
-            />
-          </ul>
-          <ul className='cards__items'>
-            <CardItem
-              src='images/img-3.jpg'
-              text='Set Sail in the Atlantic Ocean visiting Uncharted Waters'
-              label='Mystery'
-              path='/services'
-            />
-            <CardItem
-              src='images/img-4.jpg'
-              text='Experience Football on Top of the Himilayan Mountains'
-              label='Adventure'
-              path='/products'
-            />
-            <CardItem
-              src='images/img-8.jpg'
-              text='Ride through the Sahara Desert on a guided camel tour'
-              label='Adrenaline'
-              path='/sign-up'
+              src='images/female.png'
+              text="I was hesitant to try Tumbler at first, but I'm so glad I did! The platform was easy to use, and I was able to find a reliable repairman who fixed my broken laptop with ease. The customer support team was also very helpful in answering my questions and guiding me through the process. I would definitely use Tumbler again for any future repair needs"
+              label='Rahel Tesfaye'
+              path='/@Rahel'
             />
           </ul>
         </div>

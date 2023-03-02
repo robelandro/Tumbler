@@ -5,6 +5,9 @@
   position: fixed;
   z-index: -1;
 }
+.hero-container .img3 {
+  justify-self: center;
+}
 
 .hero-container {
   /* background: url('/images/img-home.jpg') center center/cover no-repeat; */
@@ -65,20 +68,15 @@
 }
 
 @media screen and (max-width: 960px) {
-  .hero-container > h1 {
+  .hero-container > p1 {
     font-size: 70px;
     margin-top: -150px;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .hero-container > h1 {
-    font-size: 50px;
-    margin-top: -100px;
-  }
-
-  .hero-container > p {
-    font-size: 30px;
+  .hero-container {
+    flex-direction: column;
   }
 
   .btn-mobile {
