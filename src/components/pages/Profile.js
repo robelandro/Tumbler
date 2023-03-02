@@ -8,6 +8,7 @@ function Profile() {
   const [isEditMode, setIsEditMode] = useState(false);
 
   useEffect(() => {
+    document.title = "Profile";
     // Fetch user data from an API
     fetch("https://jsonplaceholder.typicode.com/users/1")
       .then((response) => response.json())

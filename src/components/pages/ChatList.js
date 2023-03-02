@@ -5,6 +5,7 @@ function ChatList() {
   const [chats, setChats] = useState([]);
 
   useEffect(() => {
+    document.title = "Chat";
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => response.json())
       .then((data) => setChats(data));
