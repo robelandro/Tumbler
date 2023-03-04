@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Profile.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faSave } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 function Profile() {
   const [userData, setUserData] = useState({});
@@ -225,6 +226,9 @@ function Profile() {
             />
           )}
         </div>
+      </div>
+      <div className="register">
+      <Link to="/login">log out</Link>
       </div>
     </div>
   );

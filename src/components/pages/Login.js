@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+// import "./Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -25,8 +26,8 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <form onSubmit={handleSubmit}>
+    <div className="register-container">
+      <form className="register-form" onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="email">Email:</label>
           <input

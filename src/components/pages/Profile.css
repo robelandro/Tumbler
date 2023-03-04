@@ -22,7 +22,7 @@
   
   .info-field {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	gap: 5px;
   }
   
@@ -38,7 +38,7 @@
 	border: none;
 	border-bottom: 1px solid #ccc;
 	background-color: transparent;
-	width: 100%;
+	/* width: 100%; */
 	box-sizing: border-box;
   }
   

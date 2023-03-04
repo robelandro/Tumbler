@@ -7,7 +7,7 @@ function OrderForm() {
   const [address, setAddress] = useState("");
   const [skillRequired, setSkillRequired] = useState("");
   const [scenario, setScenario] = useState("");
-  const [setFile] = useState(null);
+  const [selectedFile, setFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState("");
 
   const handleFileInputChange = (e) => {
@@ -71,12 +71,22 @@ function OrderForm() {
           onChange={(e) => setScenario(e.target.value)}
         ></textarea>
       </div>
-      <div className="image-upload ">
-        <h3>Upload Image</h3>
-        <div className="file-upload">
-          <input type="file" onChange={handleFileInputChange} />
-          {previewUrl && <img src={previewUrl} alt="Preview" />}
-        </div>
+      <div className="image-upload">
+        <label htmlFor="file-upload" className="custom-file-upload">
+          Choose file
+        </label>
+        <input
+          id="file-upload"
+          type="file"
+          onChange={handleFileInputChange}
+          style={{ opacity: 0 }}
+        />
+        {selectedFile && (
+          <p>
+            Selected file: <strong>{selectedFile.name}</strong>
+          </p>
+        )}
+        {previewUrl && <img src={previewUrl} alt="Preview" />}
       </div>
       <button type="submit" className="order-btn">
         Order
