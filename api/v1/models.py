@@ -18,6 +18,10 @@ class Person(BaseModel):
     location = db.Column(db.String(120), nullable=False)
     password = db.Column(db.String(120), nullable=False)
 
+    posts = db.relationship('Post', backref='poster', lazy=True)
+    ratings_sent = db.relationship('Rating', backref='from_user', lazy=True)
+    ratings_received = db.relationship('Rating', backref='to_user', lazy=True)
+
     def serialize(self):
         return {
             'id': self.id,
@@ -38,6 +42,7 @@ class Post(BaseModel):
     post_date = db.Column(db.String(120), nullable=False)
     pic_url = db.Column(db.String(250), nullable=False)
     poster_name = db.Column(db.String(120), nullable=False)
+    intrested_count = db.Column(db.Integer, nullable=False)
     deadline = db.Column(db.String(120), nullable=False)
 
     user_id = db.Column(db.String(120), db.ForeignKey('person.id'), nullable=False)

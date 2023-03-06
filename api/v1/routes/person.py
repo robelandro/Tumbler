@@ -17,12 +17,12 @@ def get_users():
 def add_user():
     try:
         data = request.get_json()
-        print(data)
+        # print(data)
         user = Person(
             name=data['name'],
             email=data['email'],
 			gender=data['gender'],
-			age=data['gender'],
+			age=data['age'],
 			date_of_birth=data['date_of_birth'],
 			phone=data['phone'],
 			location=data['location'],
