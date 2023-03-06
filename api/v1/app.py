@@ -1,9 +1,13 @@
 #!/usr/bin/python3
-from os import environ
-from flask import Flask, make_response, jsonify
+from os import environ ,path
+from werkzeug.utils import secure_filename
+from flask import Flask, make_response, jsonify, send_from_directory, request
 from flask_cors import CORS
 from api.v1.routes import app_routes
 from api.v1.models import db
+
+UPLOAD_FOLDER = '/data/upload'  # The folder where the images will be stored
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}  # The allowed file extensions
 
 if environ.get('DATABASE_URI') == None:
     environ['DATABASE_URI'] = 'mysql+pymysql://tumbler:@localhost/tumbler_api'
@@ -11,9 +15,28 @@ if environ.get('DATABASE_URI') == None:
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('DATABASE_URI')
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.register_blueprint(app_routes)
 cors = CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 db.init_app(app)
+
+@app.route('/upload_image', methods=['POST'])
+def upload_image():
+    file = request.files['file']
+    if file and '.' in file.filename and file.filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS:
+        filename = secure_filename(file.filename)
+        file_path = path.join(app.config['UPLOAD_FOLDER'], filename)
+        file.save(file_path)
+        return jsonify({'message': 'Image uploaded successfully.', 'filename': filename}), 201
+    else:
+        return jsonify({'error': 'Invalid file format.'}), 400
+
+@app.route('/images/<path:filename>')
+def get_image(filename):
+    try:
+        return send_from_directory('/data/upload', filename, as_attachment=False)
+    except FileNotFoundError:
+        return jsonify({'error': 'Image not found.'}), 404
 
 @app.teardown_appcontext
 def close_db(error):
