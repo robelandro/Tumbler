@@ -1,17 +1,17 @@
 #!/usr/bin/python3
 """ Flask Application """
+from flask import jsonify, request
 from api.v1.routes import app_routes
-from api.v1.app import db, Person
-from flask import Flask, jsonify, request
+from api.v1.models import db, Person
 
 @app_routes.route('/users', methods=['GET'])
 def get_users():
-	try:
-		users = Person.query.all()
-		return jsonify([user.serialize() for user in users]), 200
-	except Exception as e:
-		print(e)
-		return jsonify({'error': str(e)}), 500
+    try:
+        users = Person.query.all()
+        return jsonify([user.serialize() for user in users]), 200
+    except Exception as e:
+        print(e)
+        return jsonify({'error': str(e)}), 500
 
 @app_routes.route('/add_user', methods=['POST'])
 def add_user():
