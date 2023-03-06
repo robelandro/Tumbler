@@ -55,7 +55,7 @@ class Post(BaseModel):
 class Chat(BaseModel):
     from_user_email = db.Column(db.String(120), nullable=False)
     to_user_email = db.Column(db.String(120), nullable=False)
-    message = db.Column(db.String(120), nullable=False)
+    messages = db.Column(db.String(120), nullable=False)
     date_send = db.Column(db.String(120), nullable=False)
 
     user_id = db.Column(db.String(120), db.ForeignKey('person.id'), nullable=False)
