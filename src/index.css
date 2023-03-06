@@ -29,6 +29,15 @@
   margin-right: 30px;
 }
 
+/* center at navbar*/
+.navbar .searchBox {
+  margin-left: auto;
+  margin-right: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .navbar a {
   margin-left: 16px;
   text-decoration: none;

@@ -22,6 +22,10 @@ db.init_app(app)
 
 @app.route('/upload_image', methods=['POST'])
 def upload_image():
+    """
+    If the file is valid, save it to the uploads folder and return a success message
+    :return: a jsonified response.
+    """
     file = request.files['file']
     if file and '.' in file.filename and file.filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS:
         filename = secure_filename(file.filename)
@@ -33,6 +37,13 @@ def upload_image():
 
 @app.route('/images/<path:filename>')
 def get_image(filename):
+    """
+    It tries to return the image from the upload directory, and if it can't find it, it returns a 404
+    error
+    
+    :param filename: The name of the file to be retrieved
+    :return: The image is being returned as a response object.
+    """
     try:
         return send_from_directory('/data/upload', filename, as_attachment=False)
     except FileNotFoundError:

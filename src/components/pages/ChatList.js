@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import "./ChatList.css";
 
 function ChatList() {
   const [chats, setChats] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.title = "Chat";
@@ -11,16 +13,22 @@ function ChatList() {
       .then((data) => setChats(data));
   }, []);
 
+  const handleChatClick = (chatId) => {
+    // handle chat click here, e.g. redirect to chat page
+    console.log(`Clicked on chat ${chatId}`);
+    navigate('/chat')
+  };
+
   return (
     <div className="chat-list">
       {chats.map((chat) => (
-        <div key={chat.id} className="chat">
+        <button key={chat.id} className="chat" onClick={() => handleChatClick(chat.name)}>
           <div className="chat-info">
             <h3>{chat.name}</h3>
             <p>{chat.username}</p>
           </div>
           <div className="chat-badge">{chat.unreadMessages}</div>
-        </div>
+        </button>
       ))}
     </div>
   );

@@ -140,6 +140,12 @@ def get_posts_by_deadline(deadline):
 """ intrested Count process """
 @app_routes.route('/intrested/<string:post_id>', methods=['PUT'])
 def intrested(post_id):
+    """
+    If the post exists, increment the intrested_count by 1 and commit the changes to the database
+    
+    :param post_id: The id of the post to be updated
+    :return: The return value is a tuple of the response object and the HTTP status code.
+    """
     try:
         post = Post.query.filter_by(id=post_id).first()
         if post:
@@ -154,6 +160,13 @@ def intrested(post_id):
 
 @app_routes.route('/unintrested/<string:post_id>', methods=['PUT'])
 def unintrested(post_id):
+    """
+    It takes a post_id as an argument, finds the post in the database, and then subtracts 1 from the
+    intrested_count column
+    
+    :param post_id: The id of the post to be updated
+    :return: The return value is a tuple of the response object and the HTTP status code.
+    """
     try:
         post = Post.query.filter_by(id=post_id).first()
         if post:
