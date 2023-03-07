@@ -1,15 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome, faComment, faUser } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom";
-import SearchBox from './SearchBox';
 
 const Navbar = () => {
   return (
     <nav className="navbar">
       <Link to="/"><img src='/images/logo.png' alt='logo' className='logo'/>Tumbler </Link>
-      <div className='searchBox'>
-        <SearchBox />
-      </div>
       <div className="links">
         <Link to="/"><FontAwesomeIcon icon={faHome} />Home</Link>
         <Link to="/chats" style={{ 

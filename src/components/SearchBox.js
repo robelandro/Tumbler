@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './SearchBox.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 function SearchBox(props) {
   const [showSearch, setShowSearch] = useState(false);
@@ -24,19 +26,20 @@ function SearchBox(props) {
   }
 
   return (
-    <div className="search-box">
+    <div className="search-container">
       {showSearch ? (
         <input
+          className="search-input"
           type="text"
           placeholder="Search"
           value={searchText}
           onChange={handleSearchTextChange}
-          onKeyPress={handleSearchKeyPress}
+          onKeyDown={handleSearchKeyPress}
           autoFocus
         />
       ) : null}
       <button className="search-button" onClick={handleButtonClick}>
-        Search
+        <FontAwesomeIcon icon={faSearch} />
       </button>
     </div>
   );
