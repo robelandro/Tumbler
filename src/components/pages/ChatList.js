@@ -16,7 +16,7 @@ function ChatList() {
   const handleChatClick = (chatId) => {
     // handle chat click here, e.g. redirect to chat page
     console.log(`Clicked on chat ${chatId}`);
-    navigate('/chat')
+    navigate('/chat', { state: { chatId} })
   };
 
   return (

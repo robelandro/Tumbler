@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
+import { useLocation } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
+
 import './ChatSpace.css'
 
 function ChatSpace() {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
+  const location = useLocation();
+  const name = location.state.chatId;
 
   const handleSendMessage = () => {
     setMessages([...messages, newMessage]);
@@ -13,7 +19,7 @@ function ChatSpace() {
   return (
     <div className="chat-box">
       <div className="header">
-        <h2>John Smith</h2>
+        <h2>{name}</h2>
       </div>
       <div className="messages">
         {messages.map((message, index) => (
@@ -27,6 +33,7 @@ function ChatSpace() {
           type="text"
           placeholder="Type a message"
           value={newMessage}
+          size={newMessage.length} 
           onChange={(event) => setNewMessage(event.target.value)}
           onKeyDown={(event) => {
             if (event.key === 'Enter') {
@@ -34,7 +41,7 @@ function ChatSpace() {
             }
           }}
         />
-        <button onClick={handleSendMessage}>Send</button>
+        <button onClick={handleSendMessage}><FontAwesomeIcon icon={faPaperPlane}/></button>
       </div>
     </div>
   );

@@ -103,3 +103,16 @@ class Rating(BaseModel):
         :return: The Rating object is being returned.
         """
         return f'Rating {self.from_user_email}, {self.to_user_email}, {self.rating}, {self.user_id}, {self.post_id}'
+
+class Intrested(BaseModel):
+    post_id = db.Column(db.String(120), db.ForeignKey('post.id'), nullable=False)
+    user_email = db.Column(db.String(120), nullable=False)
+    date_send = db.Column(db.String(120), nullable=False)
+
+    def __repr__(self):
+        """
+        The __repr__ function is a special function that is used to return a string representation of the
+        object
+        :return: The Intrested object is being returned.
+        """
+        return f'Intrested {self.post_id}, {self.user_email}'

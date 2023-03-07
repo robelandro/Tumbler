@@ -3,7 +3,7 @@
   background: #fff;
 }
 
-h1 {
+.cards h1 {
   text-align: center;
 }
 
@@ -100,12 +100,6 @@ h1 {
   font-style: italic;
 }
 
-@media only screen and (min-width: 1200px) {
-  .content__blog__container {
-    width: 84%;
-  }
-}
-
 @media only screen and (min-width: 1024px) {
   .cards__items {
     display: flex;
@@ -115,5 +109,22 @@ h1 {
 @media only screen and (max-width: 1024px) {
   .cards__item {
     margin-bottom: 2rem;
+  }
+}
+
+/* for mobile version */
+@media only screen and (max-width: 768px) {
+  .cards__container {
+    width: 100%;
+  }
+  .cards__items {
+    flex-direction: column;
+    width: 100%;
+  }
+  .cards__item {
+    margin: 0 1rem;
+  }
+  .cards__item__text {
+    font-size: 12px;
   }
 }

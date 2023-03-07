@@ -10,10 +10,10 @@ const Home = () => {
   return (
     <div className="home">
       <h2>Homepage</h2>
+      <PostOrder />
       <div className='searchBox'>
         <SearchBox />
       </div>
-      <PostOrder />
       <Posts />
     </div>
   );
