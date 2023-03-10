@@ -28,7 +28,7 @@ function Profile() {
     .catch(error => {
       console.error(error);
     });
-  }, []);
+  }, [Cookie]);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
