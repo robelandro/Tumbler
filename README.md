@@ -14,6 +14,7 @@ in my country there is no platform where you can get your broken anything fixed 
 # How to use tumbler?
 
 since it prortfolio project it not yet available for public use. But you can test it by cloning this repo and running it on your local machine.
+
 * Landing Page
 ![Landing Page](./Resource/LandingPage.png) or Temp website [here](http://tumbler.nftalem.tech/about)
 * Frontpage
@@ -35,6 +36,10 @@ since it prortfolio project it not yet available for public use. But you can tes
 ## 📦 install dependencies
 
 ```bash
+sudo pip install -r requirements.txt
+```
+
+```bash
 npm install
 ```
 
@@ -44,16 +49,17 @@ npm install
 npm start
 ```
 
-## 🏃‍♂️ run the app in development mode
-
-```bash
-npm run dev
-```
-
 ## 🏃‍♂️ run the app in production mode
 
 ```bash
-npm run prod
+npm run build
+```
+
+## to set up database run the following command
+
+```
+cat mysql_setup.sql | sudo mysql -hlocalhost -uroot -p
+sudo mysql -u tumbler -p 
 ```
 
 # 🧑🏿 Author
