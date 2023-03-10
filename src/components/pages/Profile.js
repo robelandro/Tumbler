@@ -2,18 +2,32 @@ import React, { useState, useEffect } from "react";
 import "./Profile.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faSave } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { useCookies } from "react-cookie";
+import { useNavigate } from 'react-router-dom';
 
 function Profile() {
   const [userData, setUserData] = useState({});
   const [isEditMode, setIsEditMode] = useState(false);
+  const [Cookie, removeCookie] = useCookies(["token"]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.title = "Profile";
     // Fetch user data from an API
-    fetch("https://jsonplaceholder.typicode.com/users/1")
-      .then((response) => response.json())
-      .then((data) => setUserData(data));
+    fetch(`http://localhost:5000/get_user/${Cookie.token}`)
+    .then(response => {
+      if (response.ok) { // Check if response status is 200 OK
+        return response.json(); // Parse response data as JSON
+      } else {
+        throw new Error(`User not found. Status code: ${response.status}`);
+      }
+    })
+    .then(data => {
+      setUserData(data);
+    })
+    .catch(error => {
+      console.error(error);
+    });
   }, []);
 
   const handleInputChange = (event) => {
@@ -29,6 +43,11 @@ function Profile() {
     // Save user data to the API
     console.log("User data saved: ", userData);
   };
+
+  const handleLogOut = () => {
+    removeCookie("token");
+    navigate("/login");
+  }
 
   return (
     <div className="profile">
@@ -155,7 +174,7 @@ function Profile() {
               onChange={handleInputChange}
             />
           ) : (
-            <span>{userData.dob}</span>
+            <span>{userData.date_of_birth}</span>
           )}
           {isEditMode && (
             <FontAwesomeIcon
@@ -178,11 +197,11 @@ function Profile() {
             <input
               type="text"
               name="address"
-              value={userData.website}
+              value={userData.location}
               onChange={handleInputChange}
             />
           ) : (
-            <span>{userData.website}</span>
+            <span>{userData.location}</span>
           )}
           {isEditMode && (
             <FontAwesomeIcon
@@ -227,8 +246,8 @@ function Profile() {
           )}
         </div>
       </div>
-      <div className="register">
-      <Link to="/login">log out</Link>
+      <div className="log-out">
+      <button onClick={handleLogOut}>log out</button>
       </div>
     </div>
   );

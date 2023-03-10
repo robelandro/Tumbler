@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useCookies } from "react-cookie";
+import { useNavigate } from 'react-router-dom';
 // import "./Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
+  const [,setCookie] = useCookies(["token"]);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://example.com/api/login", {
+    fetch("http://localhost:5000/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -20,9 +24,20 @@ const Login = () => {
         password
       })
     })
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch(err => console.error(err));
+      .then(response => {
+        if (response.status === 200)
+          return response.json();
+        else{
+          alert("Invalid credentials");
+        }
+      })
+      .then(data => {
+        setCookie("token", data.token, { path: "/" });
+        if (data.token)
+          navigate("/");
+      })
+      .catch(err => {
+        console.error(err)});
   };
 
   return (

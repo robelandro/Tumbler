@@ -12,6 +12,21 @@
 	font-size: 32px;
 	text-align: center;
   }
+  .profile .log-out {
+	display: flex;
+	justify-content: center;
+  }
+  .profile .log-out button{
+	margin-top: 20px;
+	padding: 10px;
+	font-size: 16px;
+	border: none;
+	border-radius: 5px;
+	background-color: #f7446e;
+	color: #fff;
+	cursor: pointer;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
   
   .user-info {
 	display: flex;
@@ -58,4 +73,3 @@
 	color: #007bff;
 	font-size: 16px;
   }
-  

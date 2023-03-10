@@ -15,7 +15,6 @@ class Person(BaseModel):
     name = db.Column(db.String(120), nullable=False)
     email = db.Column(db.String(120), nullable=False)
     gender = db.Column(db.String(20), nullable=False)
-    age = db.Column(db.Integer, nullable=False)
     date_of_birth = db.Column(db.String(20), nullable=False)
     phone = db.Column(db.String(120), nullable=False)
     location = db.Column(db.String(120), nullable=False)
@@ -34,7 +33,6 @@ class Person(BaseModel):
             'name': self.name,
             'email': self.email,
             'gender': self.gender,
-            'age': self.age,
             'date_of_birth': self.date_of_birth,
             'phone': self.phone,
             'location': self.location

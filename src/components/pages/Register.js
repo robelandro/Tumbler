@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useCookies } from "react-cookie";
+import { useNavigate } from 'react-router-dom';
 import "./Register.css";
 
 const Register = () => {
+  const [,setCookie] = useCookies(["token"]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [gender, setGender] = useState("");
@@ -9,10 +12,11 @@ const Register = () => {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://example.com/api/register", {
+    fetch("http://localhost:5000/add_user", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -28,7 +32,12 @@ const Register = () => {
       })
     })
       .then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => {
+        console.log(data)
+        setCookie("token", data.token, { path: "/" });
+        if (data.token)
+          navigate("/");
+      })
       .catch(err => console.error(err));
   };
 

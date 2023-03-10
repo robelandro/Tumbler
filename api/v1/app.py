@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from os import environ ,path
+from os import environ ,path, makedirs, path
 from werkzeug.utils import secure_filename
 from flask import Flask, make_response, jsonify, send_from_directory, request
 from flask_cors import CORS
@@ -11,13 +11,15 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}  # The allowed file extension
 
 if environ.get('DATABASE_URI') == None:
     environ['DATABASE_URI'] = 'mysql+pymysql://tumbler:@localhost/tumbler_api'
+if path.isdir(UPLOAD_FOLDER) == False:
+    makedirs(UPLOAD_FOLDER)
 
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('DATABASE_URI')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.register_blueprint(app_routes)
-cors = CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
 db.init_app(app)
 
 @app.route('/upload_image', methods=['POST'])

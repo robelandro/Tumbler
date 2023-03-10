@@ -27,20 +27,18 @@ def add_user():
     """
     try:
         data = request.get_json()
-        # print(data)
         user = Person(
             name=data['name'],
             email=data['email'],
 			gender=data['gender'],
-			age=data['age'],
-			date_of_birth=data['date_of_birth'],
+			date_of_birth=data['dob'],
 			phone=data['phone'],
-			location=data['location'],
-			password=data['password']
+			location=data['address'],
+			password=data['password'],
         )
         db.session.add(user)
         db.session.commit()
-        return jsonify({'message': 'User added successfully.'}), 201
+        return jsonify({'message': 'User added successfully.','token':user.id}), 201
     except Exception as e:
         print(e)
         return jsonify({'error': str(e)}), 500
@@ -84,6 +82,42 @@ def update_user(user_id):
             user.password = data.get('password', user.password)
             db.session.commit()
             return jsonify({'message': 'User updated successfully.'}), 200
+        else:
+            return jsonify({'error': 'User not found.'}), 404
+    except Exception as e:
+        print(e)
+        return jsonify({'error': str(e)}), 500
+
+@app_routes.route('/get_user/<string:token>', methods=['GET'])
+def get_user(token):
+    """
+    It takes a token from the request, queries the database for the user with the email in the token,
+    and returns a JSON response with the user's information.
+    :return: A list of users in JSON format.
+    """
+    try:
+        user = Person.query.filter_by(id=token).first()
+        if user:
+            return jsonify(user.serialize()), 200
+        else:
+            return jsonify({'error': 'User not found.'}), 404
+    except Exception as e:
+        # print(e)
+        return jsonify({'error': str(e)}), 500
+
+@app_routes.route('/login', methods=['POST'])
+def login():
+    """
+    It takes a JSON object from the request, creates a new Person object with the data from the JSON
+    """
+    try:
+        data = request.get_json()
+        user = Person.query.filter_by(email=data['email']).first()
+        if user:
+            if user.password == data['password']:
+                return jsonify({'message': 'Login successfully.','token':user.id}), 200
+            else:
+                return jsonify({'error': 'Incorrect password.'}), 404
         else:
             return jsonify({'error': 'User not found.'}), 404
     except Exception as e:

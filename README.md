@@ -2,7 +2,7 @@
 
 --------------------------------------------------------------------------------
 
-you can see the live version of this project [here](http://test.nftalem.tech/)
+you can see the live version of this project [here](http://tumbler.nftalem.tech/)
 --------------------------------------------------------------------------------
 
 Tumbler is a commercial platform where you can get anything that can fixed by your local repairman. It is a platform where you can get your broken phone fixed, your broken laptop fixed, your broken car fixed, your broken house fixed, your broken anything fixed. It is a platform where you can get your broken anything fixed by your local repairman.
@@ -15,7 +15,7 @@ in my country there is no platform where you can get your broken anything fixed 
 
 since it prortfolio project it not yet available for public use. But you can test it by cloning this repo and running it on your local machine.
 * Landing Page
-![Landing Page](./Resource/LandingPage.png) or Temp website [here](http://test.nftalem.tech/about)
+![Landing Page](./Resource/LandingPage.png) or Temp website [here](http://tumbler.nftalem.tech/about)
 * Frontpage
 ![Frontpage](./Resource/FrontPage.jpeg)
 * Order Form
