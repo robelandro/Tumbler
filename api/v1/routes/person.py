@@ -100,7 +100,7 @@ def get_user(token):
         if user:
             return jsonify(user.serialize()), 200
         else:
-            return jsonify({'error': 'User not found.'}), 404
+            return jsonify({'error': 'User not found.'}), 200
     except Exception as e:
         # print(e)
         return jsonify({'error': str(e)}), 500
