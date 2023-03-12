@@ -20,8 +20,8 @@ def get_posts():
 def add_post():
     try:
         data = request.get_json()
-        image_url = 'http://localhost:5000/upload_image'
-        files = {'file': open('/path/to/image', 'rb')}
+        image_url = 'http://api.nftalem.tech/upload_image'
+        files = {'file': open('/data/upload', 'rb')}
         response = requests.post(image_url, files=files)
         if response.status_code == 201:
             filename = response.json()['filename']

@@ -104,7 +104,7 @@ function deleteData(user_id) {
 }
 
 function updateUser(userId, userData) {
-    fetch(`http://localhost:5000/update_user/${userId}`, {
+    fetch(`http://api.nftalem.tech/update_user/${userId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'

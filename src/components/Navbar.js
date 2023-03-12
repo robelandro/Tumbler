@@ -10,7 +10,7 @@ const Navbar = () => {
 
   useEffect(() => {
     // Fetch user data from an API
-    fetch(`http://localhost:5000/get_user/${cookies.token}`)
+    fetch(`http://api.nftalem.tech/get_user/${cookies.token}`)
     .then(response => {
       if (response.ok) { // Check if response status is 200 OK
         return response.json(); // Parse response data as JSON

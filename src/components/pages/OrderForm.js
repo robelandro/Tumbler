@@ -24,7 +24,25 @@ function OrderForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // handle form submission logic here
+    fetch("http://api.nftalem.tech/add_post", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        workType,
+        deadline,
+        skillRequired,
+        scenario,
+        selectedFile,
+        address
+      })
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+      })
+      .catch(err => console.error(err));
   };
 
   return (
