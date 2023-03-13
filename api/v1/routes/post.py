@@ -3,9 +3,12 @@
 from flask import jsonify, request
 from api.v1.routes import app_routes
 from api.v1.models import db, Post
-import requests
-import os
+from os import path
 from datetime import datetime
+from werkzeug.utils import secure_filename
+
+UPLOAD_FOLDER = '/data/upload'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}  # The allowed file extensions
 
 @app_routes.route('/posts', methods=['GET'])
 def get_posts():
@@ -19,26 +22,32 @@ def get_posts():
 @app_routes.route('/add_post', methods=['POST'])
 def add_post():
     try:
-        data = request.get_json()
-        image_url = 'http://api.nftalem.tech/upload_image'
-        files = {'file': open('/data/upload', 'rb')}
-        response = requests.post(image_url, files=files)
-        if response.status_code == 201:
-            filename = response.json()['filename']
-            now = datetime.now()
-            post = Post(
-                skill=data['skill'],
-                description=data['description'],
-                post_date=now.strftime("%Y-%m-%d %H:%M:%S"),
-                pic_url=os.path.join('/data/upload', filename),  # Save the full path to the image in the database
-                poster_name=data['poster_name'],
-                deadline=data['deadline']
-            )
-            db.session.add(post)
-            db.session.commit()
-            return jsonify({'message': 'post added successfully.'}), 201
+        deadline = request.form.get('deadline')
+        skill_required = request.form.get('skillRequired')
+        scenario = request.form.get('scenario')
+        selected_file = request.files.get('selectedFile')
+        address = request.form.get('address')
+        token = request.form.get('token')
+        if selected_file and '.' in selected_file.filename and selected_file.filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS:
+            filename = secure_filename(selected_file.filename)
+            file_path = path.join(UPLOAD_FOLDER, token + '.' + filename)
+            selected_file.save(file_path)
         else:
-            return jsonify({'error': 'Failed to upload image.'}), 500
+            return jsonify({'error': 'Invalid file format.'}), 404
+        now = datetime.now()
+        post = Post(
+            skill=skill_required,
+            description=scenario,
+            post_date=now.strftime("%Y-%m-%d %H:%M:%S"),
+            pic_url=path.join(UPLOAD_FOLDER, token + '.' + filename),
+            intrested_count=0,
+            deadline=deadline,
+            poster_id=token,
+            location=address
+        )
+        db.session.add(post)
+        db.session.commit()
+        return jsonify({'message': 'post added successfully.'}), 201
     except Exception as e:
         print(e)
         return jsonify({'error': str(e)}), 500

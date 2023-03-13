@@ -52,13 +52,29 @@ class Post(BaseModel):
     description = db.Column(db.String(120), nullable=False)
     post_date = db.Column(db.String(120), nullable=False)
     pic_url = db.Column(db.String(250), nullable=False)
-    poster_name = db.Column(db.String(120), nullable=False)
     intrested_count = db.Column(db.Integer, nullable=False)
     deadline = db.Column(db.String(120), nullable=False)
+    location = db.Column(db.String(120), nullable=False)
 
-    user_id = db.Column(db.String(120), db.ForeignKey('person.id'), nullable=False)
+    poster_id = db.Column(db.String(120), db.ForeignKey('person.id'), nullable=False)
 
     chats = db.relationship('Chat', backref='post', lazy=True)
+
+    def serialize(self):
+        """
+        The serialize function takes a dictionary and returns a dictionary
+        :return: The id, skill, description, post_date, pic_url, poster_name, deadline, and user_id
+        """
+        return {
+            'id': self.id,
+            'skill': self.skill,
+            'description': self.description,
+            'post_date': self.post_date,
+            'pic_url': self.pic_url,
+            'poster_name': self.poster.name,
+            'deadline': self.deadline,
+            'poster_id': self.poster_id
+        }
 
     def __repr__(self):
         """

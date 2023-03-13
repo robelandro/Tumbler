@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from os import environ ,path, makedirs, path
+from os import environ ,path, makedirs
 from werkzeug.utils import secure_filename
 from flask import Flask, make_response, jsonify, send_from_directory, request
 from flask_cors import CORS

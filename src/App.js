@@ -17,7 +17,7 @@ function App() {
   const [status, setStatus] = useState(true);
 
   function getUserData(token) {
-    return fetch(`http://api.nftalem.tech/get_user/${token}`)
+    return fetch(`http://localhost:5000/get_user/${token}`)
       .then(response => {
         if (response.ok) {
           return response.json();

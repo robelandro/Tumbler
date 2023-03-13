@@ -14,7 +14,7 @@ function Profile() {
   useEffect(() => {
     document.title = "Profile";
     // Fetch user data from an API
-    fetch(`http://api.nftalem.tech/get_user/${Cookie.token}`)
+    fetch(`http://localhost:5000/get_user/${Cookie.token}`)
     .then(response => {
       if (response.ok) { // Check if response status is 200 OK
         return response.json(); // Parse response data as JSON

@@ -16,7 +16,7 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://api.nftalem.tech/add_user", {
+    fetch("http://localhost:5000/add_user", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -33,7 +33,6 @@ const Register = () => {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data)
         setCookie("token", data.token, { path: "/" });
         if (data.token)
           navigate("/");
