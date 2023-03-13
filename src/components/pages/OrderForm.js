@@ -35,7 +35,7 @@ const handleSubmit = (e) => {
   formData.append("selectedFile", selectedFile);
   formData.append("address", address);
   formData.append("token", token);
-  fetch("http://localhost:5000/add_post", {
+  fetch("http://api.nftalem.tech/add_post", {
     method: "POST",
     body: formData,
   })

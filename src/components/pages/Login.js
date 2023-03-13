@@ -13,7 +13,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:5000/login", {
+    fetch("http://api.nftalem.tech/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
